@@ -1,0 +1,71 @@
+.container.m-5.p-5
+  .row
+    .col-xl-8.order-xl-1
+      .card.shadow-lg
+        .card-header.bg-light.border-1
+          .row.align-items-center
+            .col-8
+              %h1.font-weight-bold.text-center Patient Details
+        .card-body.bg-white
+          .table-responsive
+            %table.table.align-items-center.table-flush
+              %tbody.thead-light
+                %tr.text-left
+                  %td.py-2.font-weight-bold Name
+                  %td.py-2
+                    .text-default= @patient.p_name
+                %tr.text-left
+                  %td.py-2.font-weight-bold Address
+                  %td.py-2
+                    .text-default= @patient.p_address
+                %tr.text-left
+                  %td.py-2.font-weight-bold Collector Name
+                  %td.py-2= @patient.col_name
+                %tr.text-left
+                  %td.py-2.font-weight-bold Collection Date
+                  %td.py-2= @patient.col_date || '--'
+                %tr.text-left
+                  %td.py-2.font-weight-bold Diagnose Code
+                  %td.py-2
+                    .text-default= @patient.diag_code
+                %tr.text-left
+                  %td.py-2.font-weight-bold Other Test Code
+                  %td.py-2
+                    .text-default= @patient.other_test_code
+                %tr.text-left
+                  %td.py-2.font-weight-bold Physician Name
+                  %td.py-2
+                    .text-default= @patient.phy_name
+                %tr.text-left
+                  %td.py-2.font-weight-bold Physician Email
+                  %td.py-2
+                    .text-default= @patient.phy_email
+                %tr.text-left
+                  %td.py-2.font-weight-bold Clinic Address
+                  %td.py-2
+                    .text-default= @patient.clinic_address
+                %tr.text-left
+                  %td.py-2.font-weight-bold Hl-7
+                  %td.py-2
+                    .text-default= @msg
+                .row.text-center
+                  .col-6.py-2.font-weight-bold
+                    .text-center
+                      %button.btn-primary.badge.ml-auto.mb-5{ 'data-toggle': 'modal', 'data-target': '#convert-hl7-modal' }
+                        %span
+                          Convert HL7
+#convert-hl7-modal.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content.shadow-lg
+      .modal-header.no-bd.bg-light
+        %h1.modal-title
+          %b
+            Hl7-message
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        .row
+          .col-md-6
+            .form-group
+              %label.placeholder{for: 'Message'}
+                %b Message

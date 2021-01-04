@@ -1,0 +1,47 @@
+.d-flex.justify-content-between.align-items-center.pb-1
+  %div
+    -#%h3 Help
+.container.m-5.p-5
+  .row
+    .col
+      .card.shadow-lg
+        .card-header.border-1.p-3
+          .row.align-items-center
+            %h1.card-title.text-center Patients
+            .col.text-right
+              %a.btn.btn-sm.btn-primary.font-weight-bold{:href => new_patient_path}
+                %i.fas.fa-plus
+                Add
+          .table-responsive
+            %table#admin-users-table.table.align-items-center.table-flush.mb-0
+              %thead.thead-light
+                %tr
+                  %th Patient Name
+                  %th Collector Name
+                  %th Physician Name
+                  %th Action
+              %tbody
+                - if @patients.blank?
+                  %tr.text-center
+                    %td.text-danger{colspan: '7'} No Patient found
+                - else
+                  - @patients.each do |user|
+                    %tr
+                      %td.font.text-underline
+                        = link_to user.p_name, patient_path(user.id)
+                      %td.font.text-underline
+                        = user.col_name
+                      %td
+                        = user.phy_name
+                      %td
+                        %a.ml-1.text-primary{href:  patient_path(user.id),
+                                             data: {toggle: 'tooltip', placement: 'top'}, title: 'Show Admin'}
+                          %span Show
+                        -#%a.ml-1.text-primary{href: edit_admin_admin_user_path(user.id),
+                        -#                     data: {toggle: 'tooltip', placement: 'top'}, title: 'Edit Admin'}
+                        -#  %span.far.fa.fa-edit
+                        %a.ml-1.text-danger.remote-link{href:  patient_path(user.id),
+                                                        title: 'Delete Admin',
+                                                        data: { remote: 'true', toggle: 'tooltip', placement: 'top',
+                                                                method: :delete, confirm: 'Are you sure?'}}
+                          %span Delete

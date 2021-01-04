@@ -1,0 +1,26 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  #host: localhost
+  #port: 5432
+  #schema_search_path: myapp,sharedapp,public
+  #min_messages: notice
+development:
+  <<: *default
+  database: hl7_demo
+  username: shubham
+  password: Gleecus123
+
+  #staging:
+  #  <<: *default
+  #  database: hjv_staging
+  #  username: upender
+  #  #password:
+  #production:
+  #  <<: *default
+  #  database: hjv_production
+  #  username: upender
+  #  #password: <%= ENV['INDIGO-SHOPIFY_DATABASE_PASSWORD'] %>
