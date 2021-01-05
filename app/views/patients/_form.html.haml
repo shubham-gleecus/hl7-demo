@@ -1,0 +1,71 @@
+.d-flex.justify-content-between.align-items-center.pb-1
+.row
+  .col-xl-6.order-xl-1
+    = form_for @patient, url: url, method: request_method, remote: true, html: { id: 'remote-form', class:'patients-form'} do |f|
+      .card.bg-light.shadow
+        .card-header.bg-white.border-1.py-3
+          .row.align-items-center
+            .col-8
+              %h3.text-center
+                = request_method.eql?(:post) ?  'Create Patient' :  'Edit Patient'
+            .col-4.text-right
+              %a.btn.btn-sm.btn-default{href: patients_path}
+                %i.fas.fa-arrow-alt-circle-left
+                Back to patients list
+        .card-body
+          .row
+            .col-md-6
+              .form-group
+                %label.placeholder{for: 'p_name'}
+                  %b Patient Name
+                = f.text_field :p_name, placeholder: 'name', class: 'form-control'
+            -#%small#emailHelp2.form-text.text-muted We'll never share your email with anyone else.
+          .row
+            .col-md-6
+              .form-group
+                %label.placeholder{for: 'p_address'}
+                  %b Patient Address
+                = f.text_field :p_address, placeholder: 'Patient Address', class: 'form-control'
+            .col-md-6
+              .form-group
+                %label.placeholder{for: 'col_name'}
+                  %b Collector Name
+                = f.text_field :col_name, placeholder: 'Collector Name', class: 'form-control'
+          .row
+            .col-md-6
+              .form-group
+                %label.placeholder{for: 'col_date'}
+                  %b Collection Date
+                = f.text_field :col_date, placeholder: 'Collection Date', class: 'form-control', type: 'date'
+            .col-md-6
+              .form-group
+                %label.placeholder{for: 'diag_code'}
+                  %b Diagnose Code
+                = f.text_field :diag_code, placeholder: 'Diagnose Code', class: 'form-control'
+          .row
+            .col-md-6
+              .form-group
+                %label.placeholder{for: 'other_test_code'}
+                  %b Other Test Code
+                = f.text_field :other_test_code, placeholder: 'Other Test Code', class: 'form-control'
+            .col-md-6
+              .form-group
+                %label.placeholder{for: 'phy_name'}
+                  %b Physician Name
+                = f.text_field :phy_name, placeholder: 'Physician Name', class: 'form-control'
+          .row
+            .col-md-6
+              .form-group
+                %label.placeholder{for: 'phy_email'}
+                  %b Physician Email
+                = f.text_field :phy_email, placeholder: 'Physician Email', class: 'form-control'
+            .col-md-6
+              .form-group
+                %label.placeholder{for: 'clinic_address'}
+                  %b Clinic Address
+                = f.text_field :clinic_address, placeholder: 'Clinic Address', class: 'form-control'
+        .card-footer.bg-white
+          .row.text-center
+            .col-6
+              %button.btn.btn-primary.btn-md.disable-submit-btn{type: 'submit'}
+                = request_method.eql?(:post) ?  'Submit' : 'Update'

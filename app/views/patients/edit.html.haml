@@ -1,0 +1,3 @@
+.container
+  = render 'patients/form', url: patient_path(@patient.id), request_method: :put,
+     back_url: patient_path(@patient.id)

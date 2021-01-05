@@ -37,9 +37,9 @@
                         %a.ml-1.text-primary{href:  patient_path(user.id),
                                              data: {toggle: 'tooltip', placement: 'top'}, title: 'Show Admin'}
                           %span Show
-                        -#%a.ml-1.text-primary{href: edit_admin_admin_user_path(user.id),
-                        -#                     data: {toggle: 'tooltip', placement: 'top'}, title: 'Edit Admin'}
-                        -#  %span.far.fa.fa-edit
+                        %a.ml-1.text-primary{href: edit_patient_path(user.id),
+                                             data: {toggle: 'tooltip', placement: 'top'}, title: 'Edit Admin'}
+                          %span Edit
                         %a.ml-1.text-danger.remote-link{href:  patient_path(user.id),
                                                         title: 'Delete Admin',
                                                         data: { remote: 'true', toggle: 'tooltip', placement: 'top',

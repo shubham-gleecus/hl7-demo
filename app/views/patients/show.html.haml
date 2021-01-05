@@ -48,12 +48,33 @@
                   %td.py-2.font-weight-bold Hl-7
                   %td.py-2
                     .text-default= @msg
-                .row.text-center
-                  .col-6.py-2.font-weight-bold
-                    .text-center
-                      %button.btn-primary.badge.ml-auto.mb-5{ 'data-toggle': 'modal', 'data-target': '#convert-hl7-modal' }
-                        %span
-                          Convert HL7
+.row.text-center
+  .col-6.py-2.font-weight-bold
+    .text-center
+      %button.btn-primary.badge.ml-auto.mb-5{ 'data-toggle': 'modal', 'data-target': '#convert-hl7-modal' }
+        %span
+          Convert HL7
+%button.btn.btn-primary{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}
+  Open modal
+#myModal.modal.fade
+  .modal-dialog.modal-dialog-centered
+    .modal-content
+      / Modal Header
+      .modal-header
+        %h4.modal-title Modal Heading
+        %button.close{"data-dismiss" => "modal", :type => "button"} ×
+      / Modal body
+      .modal-body
+        Modal body..
+      / Modal footer
+      .modal-footer
+        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
+
+%p.mb-2
+  %a.btn.btn-sm.btn-block.btn-secondary.text-left{href: patients_path}
+    %span.font-weight-bold.ml-1 List All Patients
+    %span.float-right
+      %i.fas.fa-arrow-alt-circle-right
 #convert-hl7-modal.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
   .modal-dialog{:role => "document"}
     .modal-content.shadow-lg
