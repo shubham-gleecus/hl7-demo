@@ -2,10 +2,12 @@
   "name": "hl7_demo",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.2",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
+    "admin-lte": "^2.4.18",
     "bootstrap": "^4.5.3",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",

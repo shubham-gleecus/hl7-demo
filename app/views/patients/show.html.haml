@@ -1,19 +1,24 @@
-.container.m-5.p-5
+.container-fluid
   .row
-    .col-xl-8.order-xl-1
-      .card.shadow-lg
-        .card-header.bg-light.border-1
+    .col
+      .card.shadow-lg.m-5
+        .card-header.border-1
           .row.align-items-center
-            .col-8
-              %h1.font-weight-bold.text-center Patient Details
-        .card-body.bg-white
+            %h1.card-title.text-center.ml-3 Patient's Detail
+            .col.text-right.pr-5
+              %a.btn.btn-sm.btn-primary.font-weight-bold{:href => patients_path}
+                Back
           .table-responsive
             %table.table.align-items-center.table-flush
               %tbody.thead-light
                 %tr.text-left
-                  %td.py-2.font-weight-bold Name
+                  %td.py-2.font-weight-bold First Name
                   %td.py-2
-                    .text-default= @patient.p_name
+                    .text-default= @patient.p_first_name
+                %tr.text-left
+                  %td.py-2.font-weight-bold Last Name
+                  %td.py-2
+                    .text-default= @patient.p_last_name
                 %tr.text-left
                   %td.py-2.font-weight-bold Address
                   %td.py-2
@@ -33,9 +38,13 @@
                   %td.py-2
                     .text-default= @patient.other_test_code
                 %tr.text-left
-                  %td.py-2.font-weight-bold Physician Name
+                  %td.py-2.font-weight-bold Physician First Name
                   %td.py-2
-                    .text-default= @patient.phy_name
+                    .text-default= @patient.phy_first_name
+                %tr.text-left
+                  %td.py-2.font-weight-bold Physician Last Name
+                  %td.py-2
+                    .text-default= @patient.phy_last_name
                 %tr.text-left
                   %td.py-2.font-weight-bold Physician Email
                   %td.py-2
@@ -45,36 +54,23 @@
                   %td.py-2
                     .text-default= @patient.clinic_address
                 %tr.text-left
-                  %td.py-2.font-weight-bold Hl-7
-                  %td.py-2
-                    .text-default= @msg
-.row.text-center
-  .col-6.py-2.font-weight-bold
-    .text-center
-      %button.btn-primary.badge.ml-auto.mb-5{ 'data-toggle': 'modal', 'data-target': '#convert-hl7-modal' }
-        %span
-          Convert HL7
-%button.btn.btn-primary{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}
-  Open modal
-#myModal.modal.fade
-  .modal-dialog.modal-dialog-centered
-    .modal-content
-      / Modal Header
-      .modal-header
-        %h4.modal-title Modal Heading
-        %button.close{"data-dismiss" => "modal", :type => "button"} ×
-      / Modal body
-      .modal-body
-        Modal body..
-      / Modal footer
-      .modal-footer
-        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
+                  %td.py-2.font-weight-bold
+                  %td.text-left
+                    .col.text-left.pr-5
+                      %button.btn.btn-sm.btn-primary.font-weight-bold{ 'data-toggle': 'modal', 'data-target': '#convert-hl7-modal' }
+                        Convert HL7
+                -#.row
+                -#  .col-6
+                -#    .text-center
+                -#      %button.btn-primary.badge.ml-auto.mb-5{ 'data-toggle': 'modal', 'data-target': '#convert-hl7-modal' }
+                -#        %span
+                -#          Convert HL7
 
-%p.mb-2
-  %a.btn.btn-sm.btn-block.btn-secondary.text-left{href: patients_path}
-    %span.font-weight-bold.ml-1 List All Patients
-    %span.float-right
-      %i.fas.fa-arrow-alt-circle-right
+            -#%p.mb-2
+            -#  %a.btn.btn-sm.btn-block.btn-secondary.text-left{href: patients_path}
+            -#    %span.font-weight-bold.ml-1 List All Patients
+            -#    %span.float-right
+            -#      %i.fas.fa-arrow-alt-circle-right
 #convert-hl7-modal.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
   .modal-dialog{:role => "document"}
     .modal-content.shadow-lg
@@ -90,3 +86,5 @@
             .form-group
               %label.placeholder{for: 'Message'}
                 %b Message
+              %p
+                = @msg

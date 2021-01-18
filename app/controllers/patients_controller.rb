@@ -26,12 +26,12 @@ class PatientsController < ApplicationController
     @msg.msh[11][2] = "O01"
     @msg.msh[14] = "2.5"
     @msg.pid[3] = @patient.id
-    @msg.pid[5][1] = @patient.p_name.split(' ')[1]
-    @msg.pid[5][2] = @patient.p_name.split(' ')[0]
+    @msg.pid[5][1] = @patient.p_last_name
+    @msg.pid[5][2] = @patient.p_first_name
     @msg.pv1[2] = @patient.diag_code
     @msg.pv1[3] = @patient.other_test_code
-    @msg.pv1[10][1] = @patient.phy_name.split(' ')[1]
-    @msg.pv1[10][2] = @patient.phy_name.split(' ')[0]
+    @msg.pv1[10][1] = @patient.phy_last_name
+    @msg.pv1[10][2] = @patient.phy_first_name
     @msg = @msg.to_hl7
   end
 
@@ -51,8 +51,8 @@ class PatientsController < ApplicationController
   private
 
   def patient_params
-    params.require(:patient).permit(:p_name, :p_address, :col_name, :col_date,
-                                    :diag_code, :other_test_code, :phy_name,
+    params.require(:patient).permit(:p_first_name, :p_last_name, :p_address, :col_name, :col_date,
+                                    :diag_code, :other_test_code, :phy_first_name, :phy_last_name,
                                     :phy_email, :clinic_address)
   end
 end

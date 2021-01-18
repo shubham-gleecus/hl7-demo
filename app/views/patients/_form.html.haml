@@ -1,8 +1,8 @@
 .d-flex.justify-content-between.align-items-center.pb-1
 .row
-  .col-xl-6.order-xl-1
+  .col-xl-8.order-xl-1
     = form_for @patient, url: url, method: request_method, remote: true, html: { id: 'remote-form', class:'patients-form'} do |f|
-      .card.bg-light.shadow
+      .card.bg-light.shadow.m-5
         .card-header.bg-white.border-1.py-3
           .row.align-items-center
             .col-8
@@ -16,9 +16,14 @@
           .row
             .col-md-6
               .form-group
-                %label.placeholder{for: 'p_name'}
-                  %b Patient Name
-                = f.text_field :p_name, placeholder: 'name', class: 'form-control'
+                %label.placeholder{for: 'p_first_name'}
+                  %b Patient First Name
+                = f.text_field :p_first_name, placeholder: 'Patient First Name', class: 'form-control'
+            .col-md-6
+              .form-group
+                %label.placeholder{for: 'p_last_name'}
+                  %b Patient Last Name
+                = f.text_field :p_last_name, placeholder: 'Patient Last Name', class: 'form-control'
             -#%small#emailHelp2.form-text.text-muted We'll never share your email with anyone else.
           .row
             .col-md-6
@@ -50,10 +55,15 @@
                 = f.text_field :other_test_code, placeholder: 'Other Test Code', class: 'form-control'
             .col-md-6
               .form-group
-                %label.placeholder{for: 'phy_name'}
-                  %b Physician Name
-                = f.text_field :phy_name, placeholder: 'Physician Name', class: 'form-control'
+                %label.placeholder{for: 'phy_first_name'}
+                  %b Physician First Name
+                = f.text_field :phy_first_name, placeholder: 'Physician First Name', class: 'form-control'
           .row
+            .col-md-6
+              .form-group
+                %label.placeholder{for: 'phy_last_name'}
+                  %b Physician Last Name
+                = f.text_field :phy_last_name, placeholder: 'Physician Last Name', class: 'form-control'
             .col-md-6
               .form-group
                 %label.placeholder{for: 'phy_email'}
