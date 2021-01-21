@@ -6,7 +6,7 @@
           .row.align-items-center
             %h1.card-title.text-center.ml-3 Patient's Detail
             .col.text-right.pr-5
-              %a.btn.btn-sm.btn-primary.font-weight-bold{:href => patients_path}
+              %a.btn.btn-sm.btn-primary.font-weight-bold{:href => patient_path(params[:id])}
                 Back
           .table-responsive
             %table.table.align-items-center.table-flush
@@ -19,10 +19,6 @@
                   %td.py-2.font-weight-bold Last Name
                   %td.py-2
                     .text-default= @patient.p_last_name
-                %tr.text-left
-                  %td.py-2.font-weight-bold Address
-                  %td.py-2
-                    .text-default= @patient.p_address
                 %tr.text-left
                   %td.py-2.font-weight-bold Collector Name
                   %td.py-2= @patient.col_name
@@ -65,50 +61,3 @@
                   %td.py-2.font-weight-bold Physician Last Name
                   %td.py-2
                     .text-default= @patient.phy_last_name
-                %tr.text-left
-                  %td.py-2.font-weight-bold Physician Email
-                  %td.py-2
-                    .text-default= @patient.phy_email
-                %tr.text-left
-                  %td.py-2.font-weight-bold Clinic Address
-                  %td.py-2
-                    .text-default= @patient.clinic_address
-                %tr.text-left
-                  %td.py-2.font-weight-bold
-                  %td.text-left
-                    .col.text-left.pr-5
-                      %button.btn.btn-sm.btn-primary.font-weight-bold{ 'data-toggle': 'modal', 'data-target': '#convert-hl7-modal' }
-                        Convert HL7
-                -#.row
-                -#  .col-6
-                -#    .text-center
-                -#      %button.btn-primary.badge.ml-auto.mb-5{ 'data-toggle': 'modal', 'data-target': '#convert-hl7-modal' }
-                -#        %span
-                -#          Convert HL7
-
-            -#%p.mb-2
-            -#  %a.btn.btn-sm.btn-block.btn-secondary.text-left{href: patients_path}
-            -#    %span.font-weight-bold.ml-1 List All Patients
-            -#    %span.float-right
-            -#      %i.fas.fa-arrow-alt-circle-right
-#convert-hl7-modal.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
-  .modal-dialog{:role => "document"}
-    .modal-content.shadow-lg
-      .modal-header.no-bd.bg-light
-        %h1.modal-title
-          %b
-            Hl7-message
-        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-          %span{"aria-hidden" => "true"} ×
-      .modal-body
-        .row
-          .col-md-8
-            .form-group
-              %label.placeholder{for: 'Message'}
-                %b Message
-              %p
-                = @patient.hl_7
-        .row.align-items-center
-          .col.text-right.pr-5
-            %a.btn.btn-sm.btn-primary.font-weight-bold{:href => "/patients/#{params[:id]}/decrypt_hl7"}
-              Decrypt HL7

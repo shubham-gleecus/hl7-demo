@@ -12,6 +12,12 @@ class CreatePatient < ActiveRecord::Migration[6.0]
       t.string :phy_last_name
       t.string :phy_email
       t.string :clinic_address
+      t.string :blood_pressure
+      t.string :hl_7
+      t.integer :pulse
+      t.integer :height
+      t.integer :weight
+      t.integer :bmi
       t.timestamps
     end
   end

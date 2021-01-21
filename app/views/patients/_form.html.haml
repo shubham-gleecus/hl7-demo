@@ -55,15 +55,43 @@
                 = f.text_field :other_test_code, placeholder: 'Other Test Code', class: 'form-control'
             .col-md-6
               .form-group
+                %label.placeholder{for: 'blood_pressure'}
+                  %b Blood Pressure
+                = f.text_field :blood_pressure, placeholder: 'Blood Pressure', class: 'form-control'
+          .row
+            .col-md-6
+              .form-group
+                %label.placeholder{for: 'pulse'}
+                  %b Pulse
+                = f.text_field :pulse, placeholder: 'Pulse', class: 'form-control', type: 'number'
+            .col-md-6
+              .form-group
+                %label.placeholder{for: 'height'}
+                  %b Height(in cm)
+                = f.text_field :height, placeholder: 'Height (in cm)', class: 'form-control', type: 'number'
+          .row
+            .col-md-6
+              .form-group
+                %label.placeholder{for: 'weight'}
+                  %b Weight
+                = f.text_field :weight, placeholder: 'Weight', class: 'form-control', type: 'number'
+            .col-md-6
+              .form-group
+                %label.placeholder{for: 'bmi'}
+                  %b BMI
+                = f.text_field :bmi, placeholder: 'BMI', class: 'form-control', type: 'number'
+          .row
+            .col-md-6
+              .form-group
                 %label.placeholder{for: 'phy_first_name'}
                   %b Physician First Name
                 = f.text_field :phy_first_name, placeholder: 'Physician First Name', class: 'form-control'
-          .row
             .col-md-6
               .form-group
                 %label.placeholder{for: 'phy_last_name'}
                   %b Physician Last Name
                 = f.text_field :phy_last_name, placeholder: 'Physician Last Name', class: 'form-control'
+          .row
             .col-md-6
               .form-group
                 %label.placeholder{for: 'phy_email'}
@@ -74,8 +102,8 @@
                 %label.placeholder{for: 'clinic_address'}
                   %b Clinic Address
                 = f.text_field :clinic_address, placeholder: 'Clinic Address', class: 'form-control'
-        .card-footer.bg-white
+        .card-footer.bg-white.text-center
           .row.text-center
-            .col-6
+            .col-6.ml-5
               %button.btn.btn-primary.btn-md.disable-submit-btn{type: 'submit'}
                 = request_method.eql?(:post) ?  'Submit' : 'Update'
