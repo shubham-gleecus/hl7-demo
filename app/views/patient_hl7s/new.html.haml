@@ -1,0 +1,27 @@
+.container
+  .d-flex.justify-content-between.align-items-center.pb-1
+  .row
+    .col-xl-8.order-xl-1
+      = form_for @patient, url: patient_hl7s_path, method: :post, remote: true, html: { id: 'remote-form', class:'patients-form'} do |f|
+        .card.bg-light.shadow.m-5
+          .card-header.bg-white.border-1.py-3
+            .row.align-items-center
+              .col-8
+                %h3.text-center
+                  = 'Create Patient'
+              .col-4.text-right
+                %a.btn.btn-sm.btn-default{href: patients_path}
+                  %i.fas.fa-arrow-alt-circle-left
+                  Back to patients list
+          .card-body
+            .row
+              .col-md-8
+                .form-group
+                  %label.placeholder{for: 'hl_7'}
+                    %b Patient HL7
+                  = f.text_area :hl_7, placeholder: 'HL7 Message', class: 'form-control'
+          .card-footer.bg-white
+            .row.text-center
+              .col-6
+                %button.btn.btn-primary.btn-md.disable-submit-btn{type: 'submit'}
+                  = 'Submit'

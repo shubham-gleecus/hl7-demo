@@ -27,6 +27,12 @@ ActiveRecord::Schema.define(version: 2021_01_04_173935) do
     t.string "phy_last_name"
     t.string "phy_email"
     t.string "clinic_address"
+    t.string "blood_pressure"
+    t.string "hl_7"
+    t.integer "pulse"
+    t.integer "height"
+    t.integer "weight"
+    t.integer "bmi"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
